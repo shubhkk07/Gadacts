@@ -6,7 +6,7 @@ class UserController{
   UserModel _currentUser;
   Future init;
 
-  UserController(){
+  UserController() {
     init = initUser();
   }
 

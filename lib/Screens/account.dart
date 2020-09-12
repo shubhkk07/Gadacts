@@ -27,7 +27,6 @@ class _AccountState extends State<Account> {
             child: Row(children: [
               Avatar(
                 avatarUrl: currentUser?.avatarUrl,
-                onTap:null,//TODO:implement profile pic selector
               ),
               Padding(padding: EdgeInsets.only(left:20),
               child: Text("${currentUser?.displayName?? null}"),

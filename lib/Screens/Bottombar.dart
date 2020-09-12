@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gadacts/Screens/account.dart';
+import 'package:gadacts/Screens/drawer.dart';
 import 'package:gadacts/Screens/homepage.dart';
 import 'package:gadacts/Screens/middle.dart';
 
@@ -9,22 +10,12 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  Color yellowishWhite = Color(0xffFFF9EC);
   void _ontappedItem(int index) {
     setState(() {
       _index = index;
     });
   }
-
-  List<String> title = ['Home', 'Search', 'Account'];
-
-  maptitle() {
-    pages.map((e) => title);
-  }
-
-  //List<Map<String,Widget>> _list = [
-  //  :HomePage(),
-
-// ];
 
   List<Widget> pages = <Widget>[
     HomePage(),
@@ -37,23 +28,22 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title.elementAt(_index)),
-      ),
+     drawer: Drawer(
+       child:SideDrawer()
+     ),
+      backgroundColor: yellowishWhite,
       body: IndexedStack(
         index: _index,
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: yellowishWhite,
           currentIndex: _index,
           onTap: _ontappedItem,
           items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Home')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search), title: Text('search')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_box), title: Text('Profile')),
+            BottomNavigationBarItem(icon: Icon(Icons.home),title: Text('Home')),
+            BottomNavigationBarItem(icon: Icon(Icons.search),title: Text('Search')),
+            BottomNavigationBarItem(icon: Icon(Icons.save_alt),title: Text('Saved')),
           ]),
     );
   }
